@@ -60,7 +60,6 @@ metadata:
   name: mongodb
   namespace: roboshop
 spec:
-  type: NodepPort
   selecter:
     project: roboshop
     component: mongodb
