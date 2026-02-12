@@ -1,3 +1,31 @@
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: mongodb
+#   namespace: roboshop
+#   labels:
+#     project: roboshop
+#     components: mongodb
+#     tier: db
+# spec:
+#   replicas: 1
+#   selecter:
+#     matchlabels:
+#       project: roboshop
+#       components: mongodb
+#       tier: db
+#   template:   
+#     metadata:
+#       labels:
+#         project: roboshop
+#         components: mongodb
+#         tier: db
+# containers:
+# - name: mongodb
+#   image: ramapandu123/mongodb:v1
+#   image: latest
+
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -5,22 +33,24 @@ metadata:
   namespace: roboshop
   labels:
     project: roboshop
-    components: mongodb
+    component: mongodb
     tier: db
 spec:
   replicas: 1
-  selecter:
-    matchlabels:
+  selector:
+    matchLabels:
       project: roboshop
-      components: mongodb
+      component: mongodb
       tier: db
-  template:   
+  template:
     metadata:
       labels:
         project: roboshop
-        components: mongodb
+        component: mongodb
         tier: db
-containers:
-- name: mongodb
-  image: ramapandu123/mongodb:v1
-  image: latest
+    spec:
+      containers:
+      - name: mongodb
+        image: ramapandu123/mongodb:v1
+        ports:
+        - containerPort: 27017
