@@ -54,3 +54,18 @@ spec:
         image: ramapandu123/mongodb:v1
         ports:
         - containerPort: 27017
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mongodb
+  namespace: roboshop
+spec:
+  type: NodepPort
+  selecter:
+    project: roboshop
+    component: mongodb
+    tier: db
+  ports:
+    - protocol: TCP
+      port: 27017
+      targetport: 27017
