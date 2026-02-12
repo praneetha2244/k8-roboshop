@@ -1,5 +1,5 @@
-FROM alamalinux:9
-RUN dnf install telnet net-tools  inputils -y
+FROM almalinux:9
+RUN dnf install telnet net-tools  iputils -y
 RUN useradd roboshop
 USER roboshop
 CMD ["sleep","10000"]
