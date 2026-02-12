@@ -20,8 +20,7 @@ spec:
         project: roboshop
         components: mongodb
         tier: db
-spec: 
-  containers:
-  - name: mongodb
-   image: ramapandu123/mongodb:v1
-   image: latest        
+containers:
+- name: mongodb
+  image: ramapandu123/mongodb:v1
+  image: latest
