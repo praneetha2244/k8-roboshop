@@ -49,14 +49,15 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: catalogue
+  name: redis
   namespace: roboshop
 spec:
   selector:
     project: roboshop
-    component: catalogue
+    component: redis
     tier: backend
   ports:
   - protocol: TCP
-    port: 8080
-    targetPort: 8080
+    port: 6379
+    targetPort: 6379
+    
