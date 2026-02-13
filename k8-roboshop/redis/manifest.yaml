@@ -21,26 +21,22 @@ spec:
       labels:
         project: roboshop
         component: redis
-        tier: db
+        tier: backend   # fixed
     spec:
       containers:
       - name: redis
         image: redis:7.0
-        
         ports:
-        - name: liveness-port
-          containerPort: 6379
+        - containerPort: 6379
 
         readinessProbe:
-          httpGet:
-            path: /health
+          tcpSocket:
             port: 6379
           failureThreshold: 1
           periodSeconds: 10
 
         livenessProbe:
-          httpGet:
-            path: /health
+          tcpSocket:
             port: 6379
           failureThreshold: 1
           periodSeconds: 15
@@ -60,4 +56,3 @@ spec:
   - protocol: TCP
     port: 6379
     targetPort: 6379
-    
