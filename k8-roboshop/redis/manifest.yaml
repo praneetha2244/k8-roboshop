@@ -26,7 +26,6 @@ spec:
       containers:
       - name: redis
         image: redis:7.0
-        imagepullpolicy: always
         
         ports:
         - name: liveness-port
