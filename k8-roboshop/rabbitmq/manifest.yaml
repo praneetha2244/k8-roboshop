@@ -3,7 +3,6 @@ kind: Deployment
 metadata:
   name: rabbitmq
   namespace: roboshop
-  # these are replica set labels
   labels:
     project: roboshop
     component: rabbitmq
@@ -12,13 +11,11 @@ metadata:
 spec:
   replicas: 1
   selector:
-    # these labels are used to select pods
     matchLabels:
       project: roboshop
       component: rabbitmq
       tier: db
 
-  # pod definition
   template:
     metadata:
       labels:
@@ -29,7 +26,7 @@ spec:
       containers:
         - name: rabbitmq
           image: rabbitmq:3
-          imagepullpolicy: Always
+          imagePullPolicy: Always
           readinessProbe:
             tcpSocket:
               port: 5672
@@ -53,6 +50,5 @@ spec:
     tier: db
   ports:
     - protocol: TCP
-      port: 5672   # service port
-      targetPort: 5672  # container port
-
+      port: 5672
+      targetPort: 5672
